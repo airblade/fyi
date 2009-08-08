@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
      "VERSION",
      "bin/fyi",
      "config_example.yml",
+     "fyi.gemspec",
      "lib/fyi.rb",
      "lib/fyi/config.rb",
      "lib/fyi/core_ext.rb",
