@@ -1,0 +1,17 @@
+#
+# Move this to ~/.fyi
+#
+
+log:
+  file: /var/log/fyi.log
+email:
+  on_success: yes
+  from: fyi@yourdomain.com
+  to: you@yourdomain.com
+  smtp:
+    host: smtp.yourserver.com
+    port: 25
+    user: username
+    password: password
+    auth: :login
+    domain: yourdomain.com
