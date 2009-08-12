@@ -17,6 +17,7 @@ class Fyi
   end
 
   def run
+    start_stopwatch
     # Borrowed from CI Joe.
     out, err, status = '', '', nil
     status = Open4.popen4(@command) do |@pid, stdin, stdout, stderr|
@@ -30,16 +31,18 @@ class Fyi
   private
 
   def run_succeeded output
-    notify :success, output
+    stop_stopwatch
+    notify :success, duration, output
   end
 
   def run_failed output, error
-    notify :failure, output, error
+    stop_stopwatch
+    notify :failure, duration, output, error
   end
 
-  def notify result, output, error = ''
+  def notify result, duration, output, error = ''
     notifiers.each do |notifier|
-      notifier.notify @command, result, output, error
+      notifier.notify @command, result, duration, output, error
     end
   end
 
@@ -50,6 +53,18 @@ class Fyi
       klass = constantize "Fyi::Notifier::#{klass_name.capitalize}"
       klass.send :new, options
     end
+  end
+
+  def duration
+    @stop - @start
+  end
+
+  def start_stopwatch
+    @start = Time.now
+  end
+
+  def stop_stopwatch
+    @stop = Time.now
   end
 
 end

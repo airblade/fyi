@@ -51,7 +51,7 @@ A notifier must:
 * subclass Fyi::Notifier
 * accept an options hash at initialisation (populated from
   configuration).
-* respond to `notify(command, result, output, error = '')`
+* respond to `notify(command, result, duration, output, error = '')`
 
 
 ## Installation

@@ -17,8 +17,8 @@ class Fyi
         @logger = Logger.new log_file
       end
 
-      def notify command, result, output, error = ''
-        logger.log severity(result), message(command, result, output, error)
+      def notify command, result, duration, output, error = ''
+        logger.log severity(result), message(command, result, duration, output, error)
       end
 
       private
@@ -27,9 +27,10 @@ class Fyi
         result == :success ? Logger::INFO : Logger::WARN
       end
 
-      def message command, result, output, error
+      def message command, result, duration, output, error
         <<END
 command: #{command}
+duration: #{duration}s
 status: #{result.to_s.upcase}
 stdout: #{output}
 stderr: #{error}
