@@ -1,6 +1,6 @@
 # FYI
 
-Be informed about task execution.
+Find out what cron is doing.
 
 
 ## Synopsis
@@ -10,7 +10,7 @@ Be informed about task execution.
 
 ## Examples
 
-    fyi ls -lt
+    fyi echo $PATH
     fyi "ls -lt | grep total"
     fyi "cd /var/www/apps/current && /opt/ree/bin/rake RAILS_ENV=production thinking_sphinx:index"
 
