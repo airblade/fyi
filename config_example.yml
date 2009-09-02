@@ -5,6 +5,9 @@
 log:
   file: /var/log/fyi.log
 email:
+  # By default the email notifier will notify you about failures
+  # but won't notify you about successes.  The line below turns
+  # on success notification; remove it if you don't want to know.
   on_success: yes
   from: fyi@yourdomain.com
   to: you@yourdomain.com
