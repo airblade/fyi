@@ -11,6 +11,7 @@ begin
     gemspec.add_dependency('pony')
     gemspec.add_dependency('open4')
   end
+  Jeweler::GemcutterTasks.new
 rescue LoadError
-  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+  puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
 end
