@@ -1,5 +1,9 @@
-require 'rubygems'
-require 'open4'
+begin
+  require 'systemu'
+rescue LoadError
+  abort '** Please install systemu.'
+end
+
 require 'fyi/config'
 require 'fyi/core_ext'
 
@@ -18,12 +22,8 @@ class Fyi
 
   def run
     start_stopwatch
-    # Borrowed from CI Joe.
-    out, err, status = '', '', nil
-    status = Open4.popen4(@command) do |@pid, stdin, stdout, stderr|
-      err, out = stderr.read.strip, stdout.read.strip
-    end
-    status.exitstatus.to_i == 0 ? run_succeeded(out) : run_failed(out, err)
+    status, stdout, stderr = systemu @command
+    status.exitstatus.to_i == 0 ? run_succeeded(stdout) : run_failed(stdout, stderr)
   rescue Object => e
     run_failed('', e.to_s)
   end
