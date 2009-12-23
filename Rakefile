@@ -4,7 +4,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gemspec|
     gemspec.name = 'fyi'
-    gemspec.summary = 'Be informed about task execution.'
+    gemspec.summary = 'Find out what cron is doing.'
     gemspec.email = 'boss@airbladesoftware.com'
     gemspec.homepage = 'http://github.com/airblade/fyi'
     gemspec.authors = ['Andy Stewart']
@@ -13,5 +13,5 @@ begin
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
+  puts 'Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler'
 end
