@@ -1,4 +1,8 @@
-require 'pony'
+begin
+  require 'pony'
+rescue LoadError
+  abort '** Please install pony.'
+end
 
 class Fyi
   class Notifier
