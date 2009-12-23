@@ -9,7 +9,7 @@ begin
     gemspec.homepage = 'http://github.com/airblade/fyi'
     gemspec.authors = ['Andy Stewart']
     gemspec.add_dependency('pony')
-    gemspec.add_dependency('open4')
+    gemspec.add_dependency('systemu')
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
