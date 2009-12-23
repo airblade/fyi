@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{fyi}
-  s.version = "1.0.2"
+  s.version = "1.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andy Stewart"]
-  s.date = %q{2009-11-24}
+  s.date = %q{2009-12-23}
   s.default_executable = %q{fyi}
   s.email = %q{boss@airbladesoftware.com}
   s.executables = ["fyi"]
@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
-  s.summary = %q{Be informed about task execution.}
+  s.summary = %q{Find out what cron is doing.}
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
