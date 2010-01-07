@@ -41,8 +41,9 @@ class Fyi
   end
 
   def notify result, duration, output, error = ''
+    host = `hostname` || 'unknown'
     notifiers.each do |notifier|
-      notifier.notify @command, result, duration, output, error
+      notifier.notify @command, result, duration, output, error, host
     end
   end
 

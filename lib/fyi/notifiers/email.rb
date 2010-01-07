@@ -37,8 +37,8 @@ class Fyi
         @on_failure = options.has_key?('on_failure') ? options['on_failure'] : true
       end
 
-      def notify command, result, duration, output, error = ''
-        send_email(command, result, duration, output, error) if should_notify?(result)
+      def notify command, result, duration, output, error = '', host = ''
+        send_email(command, result, duration, output, error, host) if should_notify?(result)
       end
 
       private
@@ -47,11 +47,11 @@ class Fyi
         (result == :success && @on_success) || (result == :failure && @on_failure)
       end
 
-      def send_email command, result, duration, output, error
+      def send_email command, result, duration, output, error, host
         Pony.mail :to      => @to,
                   :from    => @from,
                   :subject => subject(command, result),
-                  :body    => body(command, duration, output, error),
+                  :body    => body(command, duration, output, error, host),
                   :via     => :smtp,
                   :smtp    => @smtp
       end
@@ -60,8 +60,10 @@ class Fyi
         "[#{result.to_s.upcase}] #{truncate command}"
       end
 
-      def body command, duration, output, error
+      def body command, duration, output, error, host
         <<END
+host: #{host}
+
 command: #{command}
 
 duration: #{duration}s
