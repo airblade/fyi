@@ -1,6 +1,4 @@
 #!/usr/bin/env ruby
-$LOAD_PATH.unshift File.dirname(__FILE__) + '/../lib'
-require 'rubygems'  # Hmm, is it ok to specify rubygems here?
-require 'fyi'
 
+require 'fyi'
 Fyi.run ARGV.join(' ')
