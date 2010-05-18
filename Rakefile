@@ -1,8 +1,6 @@
 $LOAD_PATH.unshift 'lib'
 require 'fyi/version'
 
-#verbose(true)
-
 desc 'Build the gem.'
 task :build do
   sh 'gem build fyi.gemspec'
