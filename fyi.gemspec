@@ -18,5 +18,5 @@ Gem::Specification.new do |s|
   s.executables        = %w( fyi )
   s.extra_rdoc_files   = %w( README.md )
   s.add_dependency 'pony',    ['>= 1.3']
-  s.add_dependency 'systemu', ['>= 0']
+  s.add_dependency 'systemu', ['>= 2.4.0']
 end
