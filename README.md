@@ -6,7 +6,7 @@ Find out what cron is doing.
 ## Synopsis
 
     fyi some_command
-  
+
 
 ## Examples
 
@@ -22,7 +22,7 @@ happened.  This is useful when `some_command` is executed
 asynchronously, e.g. via cron, and you want to know how it
 went without cluttering up your crontab with pipe redirections.
 
-When `fyi` executes `some_command` it captures standard out, 
+When `fyi` executes `some_command` it captures standard out,
 standard error, and whether `some_command` succeeded or failed.
 These are then reported by any notifiers you have configured.
 Success is defined by a 0 exit code and failure by a non-zero
@@ -56,7 +56,7 @@ A notifier must:
 
 ## Installation
 
-    sudo gem install fyi
+    gem install fyi
 
 
 ## Configuration
@@ -69,7 +69,7 @@ The key-value pairs in each notifier section are passed in
 a hash to the notifier class at instantiation.
 
 
-## Problems 
+## Problems
 
 Please use GitHub's [issue tracker](http://github.com/airblade/fyi/issues).
 
