@@ -1,4 +1,5 @@
-# Lifted from ActiveSupport.
+# Thanks ActiveSupport:
+# https://github.com/rails/rails/blob/v3.0.9/activesupport/lib/active_support/inflector/methods.rb#L89
 #
 # Ruby 1.9 introduces an inherit argument for Module#const_get and
 # #const_defined? and changes their default behavior.
