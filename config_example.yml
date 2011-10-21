@@ -12,9 +12,9 @@ email:
   from: fyi@yourdomain.com
   to: you@yourdomain.com
   smtp:
-    host: smtp.yourserver.com
+    address: smtp.yourserver.com
     port: 25
-    user: username
+    user_name: username
     password: password
-    auth: :login
+    authentication: :login
     domain: yourdomain.com
