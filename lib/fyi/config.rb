@@ -1,3 +1,5 @@
+require 'yaml'
+
 class Fyi
   class Config
 
@@ -9,7 +11,7 @@ class Fyi
 
     def config
       defaults = { 'log' => {} }
-      conf = YAML::load(config_file) rescue {}
+      conf = YAML::load(config_file)
       defaults.merge(conf)
     end
 
