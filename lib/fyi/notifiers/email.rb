@@ -48,12 +48,12 @@ class Fyi
       end
 
       def send_email command, result, duration, output, error, host
-        Pony.mail :to      => @to,
-                  :from    => @from,
-                  :subject => subject(command, result),
-                  :body    => body(command, duration, output, error, host),
-                  :via     => :smtp,
-                  :smtp    => @smtp
+        Pony.mail :to          => @to,
+                  :from        => @from,
+                  :subject     => subject(command, result),
+                  :body        => body(command, duration, output, error, host),
+                  :via         => :smtp,
+                  :via_options => @smtp
       end
 
       def subject command, result
