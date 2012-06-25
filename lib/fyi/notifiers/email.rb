@@ -1,8 +1,4 @@
-begin
-  require 'pony'
-rescue LoadError
-  abort '** Please install pony.'
-end
+require 'mail'
 
 class Fyi
   class Notifier
@@ -21,20 +17,19 @@ class Fyi
       #   Optional.  Defaults to true.
       # +smtp+: you should supply SMTP config options under this key.
       #
-      # SMTP config options are:
-      # +host+
-      # +port+
-      # +user+
-      # +password+
-      # +auth+
-      # +domain+
+      # SMTP config options are whatever Mail takes.
+      # https://github.com/mikel/mail/blob/master/lib/mail/network/delivery_methods/smtp.rb
       def initialize options
         @from = options['from']
         @to   = options['to']
-        @smtp = symbolize_keys options['smtp']
         @on_success = options['on_success']
         # Notify of failures by default.
         @on_failure = options.has_key?('on_failure') ? options['on_failure'] : true
+
+        smtp = symbolize_keys(options['smtp'])
+        Mail.defaults do
+          delivery_method :smtp, smtp
+        end
       end
 
       def notify command, result, duration, output, error = '', host = ''
@@ -48,12 +43,17 @@ class Fyi
       end
 
       def send_email command, result, duration, output, error, host
-        Pony.mail :to          => @to,
-                  :from        => @from,
-                  :subject     => subject(command, result),
-                  :body        => body(command, duration, output, error, host),
-                  :via         => :smtp,
-                  :via_options => @smtp
+        _subject = subject(command, result)
+        _body    = body(command, duration, output, error, host)
+        _to      = @to
+        _from    = @from
+
+        Mail.deliver do
+          to      _to
+          from    _from
+          subject _subject
+          body    _body
+        end
       end
 
       def subject command, result

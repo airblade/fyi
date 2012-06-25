@@ -1,9 +1,4 @@
-begin
-  require 'systemu'
-rescue LoadError
-  abort '** Please install systemu.'
-end
-
+require 'systemu'
 require 'fyi/config'
 require 'fyi/core_ext'
 

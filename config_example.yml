@@ -13,8 +13,10 @@ email:
   to: you@yourdomain.com
   smtp:
     address: smtp.yourserver.com
-    port: 25
+    port: 465
+    domain: yourdomain.com
     user_name: username
     password: password
-    authentication: :login
-    domain: yourdomain.com
+    authentication: 'plain'
+    enable_starttls_auto: false
+    ssl: true
