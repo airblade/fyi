@@ -19,15 +19,15 @@ class Fyi
     start_stopwatch
     status, stdout, stderr = systemu @command
     stop_stopwatch
-    status.exitstatus.to_i == 0 ? run_succeeded(stdout) : run_failed(stdout, stderr)
+    status.exitstatus.to_i == 0 ? run_succeeded(stdout, stderr) : run_failed(stdout, stderr)
   rescue Object => e
     run_failed('', e.to_s)
   end
 
   private
 
-  def run_succeeded output
-    notify :success, duration, output
+  def run_succeeded output, error
+    notify :success, duration, output, error
   end
 
   def run_failed output, error
