@@ -24,7 +24,7 @@ class Fyi
     # Kernel.system is similar to Kernel.exec.
     stdout, stderr, status = Open3.capture3 "#{@command};"
     stop_stopwatch
-    status.exitstatus.to_i == 0 ? run_succeeded(stdout, stderr) : run_failed(stdout, stderr)
+    status.success? ? run_succeeded(stdout, stderr) : run_failed(stdout, stderr)
   rescue Object => e
     run_failed('', e.to_s)
   end
