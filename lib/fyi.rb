@@ -1,4 +1,4 @@
-require 'systemu'
+require 'open3'
 require 'fyi/config'
 require 'fyi/core_ext'
 
@@ -17,7 +17,12 @@ class Fyi
 
   def run
     start_stopwatch
-    status, stdout, stderr = systemu @command
+    # Append ";" to command to force Ruby to invoke via shell.
+    #
+    # Open3.capture3 -> Open3.popen3 -> Process.spawn
+    # Process.spawn is similar to Kernel.system
+    # Kernel.system is similar to Kernel.exec.
+    stdout, stderr, status = Open3.capture3 "#{@command};"
     stop_stopwatch
     status.exitstatus.to_i == 0 ? run_succeeded(stdout, stderr) : run_failed(stdout, stderr)
   rescue Object => e
